@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+@theme {
+  --font-family-sans: 'Poppins', sans-serif;
+
+  /* Brand — Sage Green (#7B9469) */
+  --color-brand-50: #f2f7ee;
+  --color-brand-100: #e3edd9;
+  --color-brand-200: #c8dbb5;
+  --color-brand-300: #a8c48d;
+  --color-brand-400: #8aad6d;
+  --color-brand-500: #7b9469;
+  --color-brand-600: #677d57;
+  --color-brand-700: #526446;
+  --color-brand-800: #3d4c34;
+  --color-brand-900: #2b3424;
+  --color-brand-950: #1a2016;
+
+  /* CTA — Amber (#FFA001) */
+  --color-cta-300: #ffd166;
+  --color-cta-400: #ffb733;
+  --color-cta-500: #ffa001;
+  --color-cta-600: #e08b00;
+  --color-cta-700: #b87200;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #111827;
+  background: #fff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
