@@ -20,8 +20,8 @@ export default function Footer() {
 
           {/* Brand */}
           <div className="lg:col-span-1">
-            <Link to="/" className="inline-flex mb-4">
-              <img src={logoEscura} alt="2Doe4" className="h-9 w-auto object-contain" />
+            <Link to="/" className="mb-4 block">
+              <img src={logoEscura} alt="2Doe4" style={{ height: '80px', width: 'auto', display: 'block' }} />
             </Link>
             <p className="text-sm leading-relaxed mb-6" style={{ color: '#101828' }}>
               Um ecossistema que conecta pessoas a projetos sociais reais — com impacto que você pode ver e vantagens que vai sentir.

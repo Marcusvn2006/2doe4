@@ -50,16 +50,16 @@ export default function Header() {
           initial={{ opacity: 0, y: -16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          className="flex items-center justify-between w-full max-w-5xl px-3 py-3 rounded-full shadow-xl shadow-black/15"
+          className="flex items-center justify-between w-full max-w-5xl px-3 rounded-full shadow-xl shadow-black/15 overflow-visible"
           style={{ background: BRAND }}
         >
           {/* Logo */}
-          <Link to="/" className="flex items-center pl-3 shrink-0">
-            <img src={logoClara} alt="2Doe4" className="h-8 w-auto object-contain" />
+          <Link to="/" className="pl-3 shrink-0">
+            <img src={logoClara} alt="2Doe4" style={{ height: '80px', width: 'auto', display: 'block' }} />
           </Link>
 
           {/* Desktop nav — centered */}
-          <nav className="hidden lg:flex items-center gap-10 flex-1 justify-center pr-10">
+          <nav className="hidden lg:flex items-center gap-10 flex-1 justify-end pr-4">
             {/* Projects dropdown */}
             <div
               className="relative"
