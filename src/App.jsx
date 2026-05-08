@@ -12,14 +12,15 @@ import './App.css'
 
 function Layout() {
   const { pathname } = useLocation()
-  const isManutencao = pathname === '/manutencao'
+  const isManutencao = pathname === '/' || pathname === '/manutencao'
 
   return (
     <>
       {!isManutencao && <Header />}
       <main className="overflow-x-clip">
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Manutencao />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/manutencao" element={<Manutencao />} />
           <Route path="/saude-brotas" element={<SaudeBrotas />} />
           <Route path="/equoterapia-boituva" element={<EquoterapiaBoituva />} />
