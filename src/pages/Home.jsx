@@ -720,11 +720,10 @@ export default function Home() {
 
       {/* ═══ PARTNERS B2B ═══ */}
       <section
-        className="pt-12 pb-[420px] sm:pb-12 lg:py-16 bg-[#98B689] bg-no-repeat bg-[center_bottom] sm:bg-left-bottom"
+        className="pt-12 pb-[420px] sm:pb-12 lg:py-16 bg-[#98B689] bg-no-repeat bg-[center_bottom] sm:bg-left-bottom bg-[length:max(90vw,420px)] lg:bg-[length:max(45vw,600px)]"
         id="parceiros"
         style={{
-          backgroundImage: `url(${imgCtaEngaja})`,
-          backgroundSize: 'max(90vw, 420px)'
+          backgroundImage: `url(${imgCtaEngaja})`
         }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
