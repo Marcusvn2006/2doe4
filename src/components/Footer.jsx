@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom'
-import { Camera, MessageCircle, Briefcase, Heart } from 'lucide-react'
+import { Camera, MessageCircle, Briefcase, Heart, Phone, Mail } from 'lucide-react'
 import logoEscura from '../assets/img/logoescura.png'
 
 export default function Footer() {
@@ -16,7 +16,7 @@ export default function Footer() {
   return (
     <footer style={{ backgroundColor: '#98B689', color: '#101828' }}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
 
           {/* Brand */}
           <div className="lg:col-span-1">
@@ -92,8 +92,24 @@ export default function Footer() {
                   {label}
                 </button>
               ))}
-              <a href="mailto:contato@2doe4.com.br" className="text-sm transition-colors" style={{ color: '#101828' }}>
-                Contato
+            </div>
+          </div>
+
+          {/* Contato */}
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: '#101828' }}>Contato</p>
+            <div className="flex flex-col gap-3">
+              <a href="tel:+5514988388888" className="flex items-center gap-2 text-sm transition-colors" style={{ color: '#101828' }}>
+                <Phone className="w-4 h-4 shrink-0" />
+                (14) 98838-8888
+              </a>
+              <a href="mailto:contato@2doe4.com.br" className="flex items-center gap-2 text-sm transition-colors" style={{ color: '#101828' }}>
+                <Mail className="w-4 h-4 shrink-0" />
+                contato@2doe4.com.br
+              </a>
+              <a href="mailto:qg@2doe4.com.br" className="flex items-center gap-2 text-sm transition-colors" style={{ color: '#101828' }}>
+                <Mail className="w-4 h-4 shrink-0" />
+                qg@2doe4.com.br
               </a>
             </div>
           </div>

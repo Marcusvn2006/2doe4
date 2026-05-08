@@ -1,5 +1,7 @@
 import ProjectPage from './ProjectPage'
 import galleryImg from '../assets/img/saudecta.webp'
+import bannerImg from '../assets/img/bannerSaude.webp'
+import bannerMobileImg from '../assets/img/bannerSaudeMobile.webp'
 
 const config = {
   heroClass:   'subhero--saude',
@@ -36,6 +38,8 @@ const config = {
 
   galleryColor: '#0D9488',
   galleryImg,
+  bannerImg,
+  bannerMobileImg,
 
   localSponsors: ['Farmácia Parceira', 'Clínica Local', 'Faculdade de Medicina', 'Laboratório XYZ'],
 }

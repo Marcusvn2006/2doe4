@@ -1,5 +1,7 @@
 import ProjectPage from './ProjectPage'
 import galleryImg from '../assets/img/meioambiententecta.webp'
+import bannerImg from '../assets/img/bannerMeioAmbiente.webp'
+import bannerMobileImg from '../assets/img/bannerMeioAmbienteMobile.webp'
 
 const config = {
   heroClass:   'subhero--ambiente',
@@ -36,6 +38,8 @@ const config = {
 
   galleryColor: '#166534',
   galleryImg,
+  bannerImg,
+  bannerMobileImg,
 
   localSponsors: ['Empresa ESG Parceira', 'ONG Ambiental', 'Prefeitura Municipal', 'Fazenda Voluntária'],
 }

@@ -159,8 +159,14 @@ function RegisterForm() {
   const submit = (e) => {
     e.preventDefault()
     if (!validate()) return
-    toast.success('Cadastro realizado! 🎉', {
-      description: 'Em breve entraremos em contato pelo WhatsApp.',
+
+    const causa = values.causa || 'Não informada'
+    const msg = `Olá! Quero me cadastrar no 2Doe4 😊\n\n*Nome:* ${values.nome}\n*Cidade:* ${values.cidade}\n*WhatsApp:* ${values.whatsapp}\n*Causa de interesse:* ${causa}`
+    const url = `https://wa.me/5514988388888?text=${encodeURIComponent(msg)}`
+    window.open(url, '_blank')
+
+    toast.success('Cadastro enviado! 🎉', {
+      description: 'Você será redirecionado ao WhatsApp.',
     })
     setValues({ nome: '', whatsapp: '', cidade: '', causa: '' })
     setErrors({})
@@ -240,22 +246,21 @@ export default function Home() {
     <>
       {/* ═══ HERO ═══ */}
       <section
-        className="relative min-h-screen flex items-center"
+        className="relative min-h-screen flex items-start sm:items-center"
         id="inicio"
       >
         <div className="absolute inset-0 bg-cover bg-center bg-no-repeat block sm:hidden" style={{ backgroundImage: `url(${bannerMobileImg})` }} />
         <div className="absolute inset-0 bg-cover bg-center bg-no-repeat hidden sm:block" style={{ backgroundImage: `url(${bannerImg})` }} />
         {/* Conteúdo */}
         <div
-          className="relative max-w-[1600px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-24 w-full pt-32 pb-20"
-          style={{ paddingLeft: '65px' }}
+          className="relative w-full max-w-[1600px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-24 pt-28 sm:pt-32 pb-10 sm:pb-20"
         >
-          <div className="max-w-[460px]">
+          <div className="max-w-[460px] mx-auto sm:mx-0 text-center sm:text-left sm:pl-[65px]">
             <motion.h1
               initial={{ opacity: 0, y: 28 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-              className="text-5xl sm:text-6xl font-bold leading-[1.1] tracking-tight text-gray-900 mb-5"
+              className="text-3xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight text-gray-900 mb-4 sm:mb-5"
             >
               Doe seu tempo.<br />
               Receba muito{' '}
@@ -266,7 +271,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.15 }}
-              className="text-gray-700 text-base sm:text-lg leading-relaxed mb-8"
+              className="text-gray-700 text-sm sm:text-lg leading-relaxed mb-6 sm:mb-8"
             >
               O 2Doe4 conecta você a projetos sociais reais, em cidades reais — com impacto que você pode ver e vantagens que você vai sentir.
             </motion.p>
@@ -275,7 +280,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.28 }}
-              className="flex flex-wrap gap-3"
+              className="flex flex-wrap gap-3 justify-center sm:justify-start"
             >
               <button
                 onClick={() => scrollTo('cadastro')}
@@ -298,12 +303,12 @@ export default function Home() {
 
       {/* ═══ MARQUEE BANNER ═══ */}
       <section className="relative w-full h-0 z-[100] pointer-events-none" aria-hidden="true">
-        <div className="absolute -bottom-56 sm:-bottom-64 left-0 w-full">
+        <div className="absolute top-0 -translate-y-1/2 left-0 w-full">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 400" className="w-full h-auto opacity-100" style={{ minWidth: '1200px' }}>
             <defs>
-              <path id="curve" d="M-71 400 Q 100 50 720 190 Q 1000 250 1511 200" fill="none"></path>
+              <path id="curve" d="M-71 300 C 0 300 200 160 480 185 C 760 205 1050 270 1511 260" fill="none"></path>
             </defs>
-            <path d="M-71 400 Q 100 50 720 190 Q 1000 250 1511 200" stroke="#FFA001" strokeWidth="120" fill="none"></path>
+            <path d="M-71 300 C 0 300 200 160 480 185 C 760 205 1050 270 1511 260" stroke="#FFA001" strokeWidth="120" fill="none"></path>
             <text fill="#ffffff" fontSize="44" fontWeight="600" dy="16">
               <motion.textPath href="#curve" style={{ startOffset: marqueeOffset }}>
                 4 projetos. 4 cidades. Um único propósito. &nbsp;&nbsp;&nbsp;&nbsp; 4 projetos. 4 cidades. Um único propósito. &nbsp;&nbsp;&nbsp;&nbsp; 4 projetos. 4 cidades. Um único propósito. &nbsp;&nbsp;&nbsp;&nbsp; 4 projetos. 4 cidades. Um único propósito. &nbsp;&nbsp;&nbsp;&nbsp; 4 projetos. 4 cidades. Um único propósito. &nbsp;&nbsp;&nbsp;&nbsp; 4 projetos. 4 cidades. Um único propósito. &nbsp;&nbsp;&nbsp;&nbsp; 4 projetos. 4 cidades. Um único propósito.
@@ -715,11 +720,11 @@ export default function Home() {
 
       {/* ═══ PARTNERS B2B ═══ */}
       <section
-        className="py-12 lg:py-16 bg-[#98B689] bg-no-repeat bg-left-bottom"
+        className="pt-12 pb-[420px] sm:pb-12 lg:py-16 bg-[#98B689] bg-no-repeat bg-[center_bottom] sm:bg-left-bottom"
         id="parceiros"
         style={{
           backgroundImage: `url(${imgCtaEngaja})`,
-          backgroundSize: 'max(45vw, 600px)'
+          backgroundSize: 'max(90vw, 420px)'
         }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">

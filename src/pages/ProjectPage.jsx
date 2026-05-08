@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { toast } from 'sonner'
@@ -131,8 +131,17 @@ export default function ProjectPage({ config }) {
     helpOptions,
     impactNums,
     galleryImg,
+    bannerImg,
+    bannerMobileImg,
     localSponsors,
   } = config
+
+  const [isMobile, setIsMobile] = useState(() => window.innerWidth < 640)
+  useEffect(() => {
+    const handler = () => setIsMobile(window.innerWidth < 640)
+    window.addEventListener('resize', handler)
+    return () => window.removeEventListener('resize', handler)
+  }, [])
 
   // Separando a primeira palavra do título para destacar o resto em Amarelo
   const titleWords = title.split(' ')
@@ -143,40 +152,49 @@ export default function ProjectPage({ config }) {
     <main className="min-h-screen bg-white">
 
       {/* ─── HERO ─── */}
-      <section className="relative bg-[#fafafa] pt-32 pb-20">
-        <div className="max-w-[1600px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-24 w-full">
+      <section
+        className="relative flex items-start sm:items-center bg-cover bg-center bg-no-repeat"
+        style={{
+          minHeight: '90vh',
+          backgroundImage: (isMobile && bannerMobileImg)
+            ? `url(${bannerMobileImg})`
+            : bannerImg ? `url(${bannerImg})` : undefined,
+          backgroundColor: '#fafafa',
+        }}
+      >
+        <div className="max-w-[1600px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-24 w-full pt-20 sm:pt-32 pb-16">
           <FadeUp>
             <Link
               to="/"
-              className="inline-flex items-center gap-2 font-semibold mb-8 transition-colors hover:opacity-80"
+              className="inline-flex items-center gap-2 font-semibold mb-6 transition-colors hover:opacity-80"
               style={{ color: BRAND }}
             >
               <ArrowLeft className="w-4 h-4" /> Voltar para o Início
             </Link>
           </FadeUp>
 
-          <div className="max-w-3xl">
+          <div className="max-w-[320px] sm:max-w-sm lg:max-w-md">
             <FadeUp delay={0.05}>
-              <span className="inline-block text-sm sm:text-base font-medium mb-3" style={{ color: AMBER }}>
+              <span className="inline-block text-sm font-medium mb-3 text-center sm:text-left w-full" style={{ color: AMBER }}>
                 {badge}
               </span>
             </FadeUp>
 
             <FadeUp delay={0.1}>
-              <h1 className="text-5xl sm:text-6xl font-bold leading-[1.1] tracking-tight text-gray-900 mb-5">
+              <h1 className="text-4xl sm:text-5xl font-bold leading-[1.1] tracking-tight text-gray-900 mb-4 text-center sm:text-left">
                 {firstWord} <br />
                 <span style={{ color: AMBER }}>{restOfTitle}</span>
               </h1>
             </FadeUp>
 
             <FadeUp delay={0.15}>
-              <p className="text-gray-700 text-base sm:text-lg leading-relaxed mb-8 font-medium">
+              <p className="text-gray-700 text-sm sm:text-base leading-relaxed mb-6 font-medium text-center sm:text-left">
                 {subtitle}
               </p>
             </FadeUp>
 
             <FadeUp delay={0.28}>
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap gap-3 justify-center sm:justify-start">
                 <a
                   href="#formulario"
                   className="inline-flex items-center justify-center text-white font-bold px-8 py-4 rounded-[0.8rem] text-base transition-all duration-200 hover:opacity-90 active:scale-[0.98]"

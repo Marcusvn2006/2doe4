@@ -1,5 +1,7 @@
 import ProjectPage from './ProjectPage'
 import galleryImg from '../assets/img/Equoterapiacta.webp'
+import bannerImg from '../assets/img/bannerEquoterapia.webp'
+import bannerMobileImg from '../assets/img/bannerEquoterapiaMobile.webp'
 
 const config = {
   heroClass: 'subhero--equo',
@@ -36,6 +38,8 @@ const config = {
 
   galleryColor: '#92400E',
   galleryImg,
+  bannerImg,
+  bannerMobileImg,
 
   localSponsors: ['Agropecuária Parceira', 'Clínica de Reabilitação', 'Haras Voluntário', 'ONG Apoiadora'],
 }

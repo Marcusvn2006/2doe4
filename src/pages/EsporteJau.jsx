@@ -1,5 +1,7 @@
 import ProjectPage from './ProjectPage'
 import galleryImg from '../assets/img/esportecta.webp'
+import bannerImg from '../assets/img/bannerEsporte.webp'
+import bannerMobileImg from '../assets/img/bannerEsporteMobile.webp'
 
 const config = {
   heroClass:   'subhero--esporte',
@@ -36,6 +38,8 @@ const config = {
 
   galleryColor: '#1D4ED8',
   galleryImg,
+  bannerImg,
+  bannerMobileImg,
 
   localSponsors: ['Loja de Artigos Esportivos', 'Prefeitura Municipal', 'Academia Parceira', 'Empresa Patrocinadora'],
 }
