@@ -50,10 +50,10 @@ const faqs = [
 ]
 
 const projects = [
-  { slug: '/saude-brotas', title: 'Saúde', desc: 'Campanhas preventivas, atendimentos comunitários e educação em saúde para quem mais precisa.', color: 'from-teal-600 to-teal-800', badge: 'bg-teal-100 text-teal-800', icon: '🏥', img: imgSaude },
-  { slug: '/equoterapia-boituva', title: 'Equoterapia', desc: 'Reabilitação por meio da interação com cavalos, atendendo crianças e adultos com deficiência.', color: 'from-amber-500 to-amber-700', badge: 'bg-amber-100 text-amber-800', icon: '🐴', img: imgEquoterapia },
-  { slug: '/esporte-jau', title: 'Esporte', desc: 'Inclusão social pelo esporte, formando atletas e criando oportunidades para jovens em situação de risco.', color: 'from-blue-600 to-blue-800', badge: 'bg-blue-100 text-blue-800', icon: '⚽', img: imgEsporte },
-  { slug: '/meio-ambiente-bocaina', title: 'Meio Ambiente', desc: 'Reflorestamento, educação ambiental e ações sustentáveis conectadas à agenda ESG.', color: 'from-green-700 to-green-900', badge: 'bg-green-100 text-green-800', icon: '🌿', img: imgMeioAmbiente },
+  { slug: '/saude',         title: 'Saúde',         desc: 'Campanhas preventivas, atendimentos comunitários e educação em saúde para quem mais precisa.', color: 'from-teal-600 to-teal-800', badge: 'bg-teal-100 text-teal-800', icon: '🏥', img: imgSaude },
+  { slug: '/equoterapia',   title: 'Equoterapia',   desc: 'Reabilitação por meio da interação com cavalos, atendendo crianças e adultos com deficiência.', color: 'from-amber-500 to-amber-700', badge: 'bg-amber-100 text-amber-800', icon: '🐴', img: imgEquoterapia },
+  { slug: '/esporte',       title: 'Esporte',       desc: 'Inclusão social pelo esporte, formando atletas e criando oportunidades para jovens em situação de risco.', color: 'from-blue-600 to-blue-800', badge: 'bg-blue-100 text-blue-800', icon: '⚽', img: imgEsporte },
+  { slug: '/meio-ambiente', title: 'Meio Ambiente', desc: 'Reflorestamento, educação ambiental e ações sustentáveis conectadas à agenda ESG.', color: 'from-green-700 to-green-900', badge: 'bg-green-100 text-green-800', icon: '🌿', img: imgMeioAmbiente },
 ]
 
 const testimonials = [
@@ -65,7 +65,7 @@ const testimonials = [
 const ecosystem = [
   { icon: Handshake, name: 'DoaBem', desc: 'Plataforma integrada de doações para projetos sociais verificados.', badge: 'Ativo', live: true },
   { icon: Bot, name: 'GPTDoaBem', desc: 'IA que conecta doadores e voluntários às causas certas.', badge: 'Ativo', live: true },
-  { icon: TrendingUp, name: 'GPT do Lucro', desc: 'Ferramenta de monetização inteligente para parceiros e afiliados.', badge: 'Em breve', live: false },
+  { icon: TrendingUp, name: 'bao2.com.br', desc: 'Ferramenta de monetização inteligente para parceiros e afiliados.', badge: 'Em breve', live: false },
   { icon: Camera, name: 'FotoDoaBem', desc: 'Banco de imagens sociais produzidas durante as ações do ecossistema.', badge: 'Em breve', live: false },
 ]
 
@@ -311,7 +311,7 @@ export default function Home() {
             <path d="M-71 300 C 0 300 200 160 480 185 C 760 205 1050 270 1511 260" stroke="#FFA001" strokeWidth="120" fill="none"></path>
             <text fill="#ffffff" fontSize="44" fontWeight="600" dy="16">
               <motion.textPath href="#curve" style={{ startOffset: marqueeOffset }}>
-                4 projetos. 4 cidades. Um único propósito. &nbsp;&nbsp;&nbsp;&nbsp; 4 projetos. 4 cidades. Um único propósito. &nbsp;&nbsp;&nbsp;&nbsp; 4 projetos. 4 cidades. Um único propósito. &nbsp;&nbsp;&nbsp;&nbsp; 4 projetos. 4 cidades. Um único propósito. &nbsp;&nbsp;&nbsp;&nbsp; 4 projetos. 4 cidades. Um único propósito. &nbsp;&nbsp;&nbsp;&nbsp; 4 projetos. 4 cidades. Um único propósito. &nbsp;&nbsp;&nbsp;&nbsp; 4 projetos. 4 cidades. Um único propósito.
+                2 amigos. 4 horas. Um propósito. doabem &nbsp;&nbsp;&nbsp;&nbsp; 2 amigos. 4 horas. Um propósito. doabem &nbsp;&nbsp;&nbsp;&nbsp; 2 amigos. 4 horas. Um propósito. doabem &nbsp;&nbsp;&nbsp;&nbsp; 2 amigos. 4 horas. Um propósito. doabem &nbsp;&nbsp;&nbsp;&nbsp; 2 amigos. 4 horas. Um propósito. doabem &nbsp;&nbsp;&nbsp;&nbsp; 2 amigos. 4 horas. Um propósito. doabem &nbsp;&nbsp;&nbsp;&nbsp; 2 amigos. 4 horas. Um propósito. doabem
               </motion.textPath>
             </text>
           </svg>
@@ -319,78 +319,84 @@ export default function Home() {
       </section>
 
       {/* ═══ IDENTIFICATION ═══ */}
-      <section className="sobre-section" id="sobre">
-        <div className="sobre-container">
-          <div className="sobre-grid">
+      <section className="relative pt-36 pb-28 sm:pt-44 sm:pb-36 bg-[#eef2e1] overflow-hidden z-10" id="sobre">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
 
             {/* Left Column */}
             <div>
               <FadeUp>
-                <p className="sobre-subtitle">Para quem é o 2Doe4?</p>
-              </FadeUp>
-              <FadeUp delay={0.05}>
-                <h2 className="sobre-title">
-                  Se você quer fazer diferença<br className="hidden-sm" /> mas não sabe por onde<br className="hidden-sm" /> começar...
-                </h2>
-              </FadeUp>
-              <FadeUp delay={0.1}>
-                <p className="sobre-highlight">O 2Doe4 existe pra isso.</p>
+                <span className="inline-block text-sm font-semibold mb-2" style={{ color: AMBER }}>
+                  Hub de Transformação Social
+                </span>
               </FadeUp>
 
-              <div className="sobre-pills-container">
-                {[
-                  'Quer ter experiência real e algo concreto para o currículo',
-                  'Busca uma rede que vai além do like nas redes sociais',
-                  'Procura se conectar a causas com propósito e impacto verdadeiro',
-                  'Quer ser reconhecido por contribuir, não só por aparecer',
-                ].map((text, i) => (
-                  <FadeUp key={i} delay={0.15 + i * 0.07}>
-                    <div className="sobre-pill">
-                      {text}
-                    </div>
-                  </FadeUp>
-                ))}
-              </div>
+              <FadeUp delay={0.05}>
+                <h2 className="text-4xl sm:text-5xl lg:text-[3.25rem] font-extrabold text-gray-900 leading-[1.1] tracking-tight mb-5">
+                  Voluntariado é<br />
+                  <span style={{ color: AMBER }}>Nossa Corrida</span>
+                </h2>
+              </FadeUp>
+
+              <FadeUp delay={0.1}>
+                <p className="text-gray-600 text-lg leading-relaxed mb-8 font-medium">
+                  Esporte, Educação e Tecnologia como ferramentas de transformação social — conectando duplas de amigos a projetos que geram impacto real e renda para comunidades.
+                </p>
+              </FadeUp>
+
+              {/* Formula Box */}
+              <FadeUp delay={0.15}>
+                <div className="bg-white rounded-2xl border border-[#8AA178]/30 p-6 mb-7 shadow-sm">
+                  <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-3">Fórmula simples</p>
+                  <p className="text-gray-900 font-extrabold text-xl mb-1">
+                    2 amigos + 4h/mês = <span style={{ color: AMBER }}>Impacto mensurável</span>
+                  </p>
+                  <p className="text-gray-400 text-sm mt-1">+ Transformação pessoal garantida</p>
+                </div>
+              </FadeUp>
+
+              <FadeUp delay={0.2}>
+                <p className="font-extrabold text-xl tracking-tight" style={{ color: BRAND }}>
+                  Dois amigos. Quatro horas. Um impacto.
+                </p>
+              </FadeUp>
             </div>
 
             {/* Right Column */}
             <FadeUp delay={0.2}>
-              <div className="sobre-card">
-                <h3 className="sobre-card-title">
-                  Você não precisa de dinheiro<br />para mudar o mundo.
+              <div className="rounded-3xl p-8 sm:p-10 shadow-xl border border-[#8AA178]" style={{ backgroundColor: BRAND }}>
+                <span className="inline-block text-xs font-bold uppercase tracking-widest text-white/70 mb-4">
+                  O que é o 2Doe4 Hub?
+                </span>
+                <h3 className="text-[22px] font-extrabold text-white leading-tight mb-4">
+                  Um ecossistema híbrido de transformação social
                 </h3>
-                <p className="sobre-card-text mb-1">
-                  Você já tem o que precisa.
-                </p>
-                <p className="sobre-card-text mb-8">
-                  A gente te mostra onde.
+                <p className="text-white/80 text-base leading-relaxed mb-8">
+                  Conecta duplas de amigos para realizarem 4 horas mensais de voluntariado — dentro e fora das arenas esportivas, com formação em tecnologia digital e geração de renda para projetos sociais.
                 </p>
 
-                <hr className="sobre-card-divider" />
+                <hr className="border-white/20 mb-8" />
 
-                <div className="sobre-card-list-container">
-                  <div className="sobre-card-list">
-                    {[
-                      'Cadastro 100% gratuito',
-                      'Conexão imediata com projetos',
-                      'Vantagens desde o primeiro dia',
-                      'Comunidade ativa no WhatsApp',
-                    ].map((f, i) => (
-                      <div key={i} className="sobre-card-list-item">
-                        {f}
-                      </div>
-                    ))}
-                  </div>
+                <div className="space-y-4 mb-8">
+                  {[
+                    'Cadastro 100% gratuito',
+                    'Conexão imediata com projetos',
+                    'Vantagens e cupons exclusivos',
+                    'Comunidade ativa no WhatsApp',
+                  ].map((f, i) => (
+                    <div key={i} className="flex items-center gap-3">
+                      <CheckCheck className="w-5 h-5 shrink-0 text-white" strokeWidth={2.5} />
+                      <span className="text-white font-medium text-sm">{f}</span>
+                    </div>
+                  ))}
                 </div>
 
-                <div className="sobre-card-button-container">
-                  <button
-                    onClick={() => scrollTo('cadastro')}
-                    className="sobre-card-button"
-                  >
-                    Quero fazer parte
-                  </button>
-                </div>
+                <button
+                  onClick={() => scrollTo('cadastro')}
+                  className="w-full bg-white hover:bg-gray-50 text-gray-900 font-extrabold py-4 rounded-xl transition-all duration-200 text-base shadow-md active:scale-[0.98]"
+                >
+                  Quero fazer parte
+                </button>
               </div>
             </FadeUp>
 

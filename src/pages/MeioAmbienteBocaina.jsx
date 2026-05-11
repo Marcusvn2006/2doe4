@@ -40,6 +40,7 @@ const config = {
   galleryImg,
   bannerImg,
   bannerMobileImg,
+  couponCode: 'VERDEDOABEM',
 
   localSponsors: ['Empresa ESG Parceira', 'ONG Ambiental', 'Prefeitura Municipal', 'Fazenda Voluntária'],
 }

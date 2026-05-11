@@ -50,10 +50,10 @@ export default function Footer() {
             <p className="text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: '#101828' }}>Projetos</p>
             <div className="flex flex-col gap-2.5">
               {[
-                { to: '/saude-brotas',          label: 'Saúde' },
-                { to: '/equoterapia-boituva',   label: 'Equoterapia' },
-                { to: '/esporte-jau',           label: 'Esporte' },
-                { to: '/meio-ambiente-bocaina', label: 'Meio Ambiente' },
+                { to: '/saude',         label: 'Saúde' },
+                { to: '/equoterapia',   label: 'Equoterapia' },
+                { to: '/esporte',       label: 'Esporte' },
+                { to: '/meio-ambiente', label: 'Meio Ambiente' },
               ].map(({ to, label }) => (
                 <Link key={to} to={to} className="text-sm transition-colors" style={{ color: '#101828' }}>
                   {label}
@@ -66,7 +66,7 @@ export default function Footer() {
           <div>
             <p className="text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: '#101828' }}>Ecossistema</p>
             <div className="flex flex-col gap-2.5">
-              {['DoaBem', 'GPTDoaBem', 'GPT do Lucro', 'FotoDoaBem'].map(item => (
+              {['DoaBem', 'GPTDoaBem', 'bao2.com.br', 'FotoDoaBem'].map(item => (
                 <a key={item} href="#" className="text-sm transition-colors" style={{ color: '#101828' }}>
                   {item}
                 </a>

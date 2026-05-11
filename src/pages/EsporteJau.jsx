@@ -40,6 +40,8 @@ const config = {
   galleryImg,
   bannerImg,
   bannerMobileImg,
+  couponCode: 'ULTRADOABEM',
+  instagramUrl: 'https://www.instagram.com/ultradoabem',
 
   localSponsors: ['Loja de Artigos Esportivos', 'Prefeitura Municipal', 'Academia Parceira', 'Empresa Patrocinadora'],
 }

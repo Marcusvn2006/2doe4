@@ -40,6 +40,8 @@ const config = {
   galleryImg,
   bannerImg,
   bannerMobileImg,
+  couponCode: 'POWERDOABEM',
+  instagramUrl: 'https://www.instagram.com/powerdoabem',
 
   localSponsors: ['Agropecuária Parceira', 'Clínica de Reabilitação', 'Haras Voluntário', 'ONG Apoiadora'],
 }

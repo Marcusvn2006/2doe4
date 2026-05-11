@@ -2,7 +2,17 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { toast } from 'sonner'
-import { MapPin, Users, Calendar, Handshake, ClipboardList, Check, ArrowLeft, CheckCheck } from 'lucide-react'
+import { MapPin, Users, Calendar, Handshake, ClipboardList, Check, ArrowLeft, CheckCheck, Copy, Share2 } from 'lucide-react'
+
+function IgIcon({ size = 20 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+    </svg>
+  )
+}
 import { cn } from '../lib/utils'
 
 const BRAND = '#7B9469'
@@ -117,6 +127,119 @@ function RegisterMini({ causaLabel }) {
   )
 }
 
+const BENEFITS = ['ofertas', 'conteúdos', 'utilidades', 'hacks', 'vouchers', 'notícias']
+
+/* ─── COUPON BLOCK ─── */
+function CouponBlock({ code, instagramUrl }) {
+  const [copied,   setCopied]   = useState(false)
+  const [igHover,  setIgHover]  = useState(false)
+
+  const copy = () => {
+    navigator.clipboard.writeText(code)
+    setCopied(true)
+    toast.success('Cupom copiado! 🎉', { description: 'Agora compartilhe com seus amigos.' })
+    setTimeout(() => setCopied(false), 2500)
+  }
+
+  const share = () => {
+    const msg = `Use meu cupom *${code}* no 2Doe4 e entre no movimento de voluntariado! 💚\nCadastre-se em: 2doe4.com.br`
+    window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`, '_blank')
+  }
+
+  return (
+    <div className="bg-[#7B9469] rounded-3xl p-8 sm:p-10 shadow-xl border border-[#8AA178]">
+
+      {/* ── Instagram CTA ── */}
+      {instagramUrl && (
+        <div className="text-center mb-8">
+          <p className="text-white/60 text-xs font-bold uppercase tracking-widest mb-5">
+            Siga e ative seus benefícios
+          </p>
+
+          <a
+            href={instagramUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            onMouseEnter={() => setIgHover(true)}
+            onMouseLeave={() => setIgHover(false)}
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '10px',
+              padding: '14px 28px',
+              borderRadius: '14px',
+              fontWeight: 700,
+              fontSize: '15px',
+              color: '#fff',
+              background: 'linear-gradient(135deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%)',
+              boxShadow: igHover
+                ? '0 0 0 3px rgba(252,180,69,0.35), 0 12px 32px rgba(253,29,29,0.45)'
+                : '0 4px 16px rgba(0,0,0,0.2)',
+              transform: igHover ? 'scale(1.05) translateY(-2px)' : 'scale(1) translateY(0)',
+              transition: 'all 0.28s cubic-bezier(0.22,1,0.36,1)',
+              textDecoration: 'none',
+            }}
+          >
+            <IgIcon size={20} />
+            Seguir no Instagram
+          </a>
+
+          {/* Benefit badges */}
+          <div className="flex flex-wrap gap-2 justify-center mt-5">
+            {BENEFITS.map(b => (
+              <span
+                key={b}
+                className="bg-white/15 hover:bg-white/25 text-white text-[11px] font-semibold px-3 py-1 rounded-full transition-colors duration-200 cursor-default"
+              >
+                {b}
+              </span>
+            ))}
+          </div>
+          <p className="text-white/40 text-[11px] mt-3">
+            Ative tudo isso seguindo o perfil acima
+          </p>
+        </div>
+      )}
+
+      <hr className="border-white/20 mb-8" />
+
+      {/* ── Cupom ── */}
+      <p className="text-white/60 text-xs font-bold uppercase tracking-widest text-center mb-4">
+        🎟 Seu cupom exclusivo
+      </p>
+
+      <div
+        onClick={copy}
+        className="group cursor-pointer bg-[#eef2e1] border-2 border-dashed border-[#FFA001]/60 hover:border-[#FFA001] rounded-2xl px-8 py-7 mb-6 transition-all duration-200 hover:bg-[#FFA001]/10 active:scale-[0.98]"
+      >
+        <p className="text-3xl sm:text-4xl font-black tracking-[0.15em] text-gray-900 uppercase font-mono group-hover:text-[#FFA001] transition-colors duration-200">
+          {code}
+        </p>
+        <p className="text-gray-500 text-xs mt-3 group-hover:text-[#FFA001] transition-colors">
+          {copied ? '✓ Copiado com sucesso!' : 'Clique para copiar'}
+        </p>
+      </div>
+
+      <div className="flex flex-col sm:flex-row gap-3 justify-center">
+        <button
+          onClick={copy}
+          className="flex items-center justify-center gap-2 bg-white hover:bg-gray-50 text-gray-900 font-bold px-6 py-3.5 rounded-xl transition-all duration-200 text-sm shadow-sm"
+        >
+          <Copy className="w-4 h-4" />
+          {copied ? 'Copiado!' : 'Copiar cupom'}
+        </button>
+        <button
+          onClick={share}
+          className="flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold px-6 py-3.5 rounded-xl transition-all duration-200 text-sm"
+        >
+          <Share2 className="w-4 h-4" />
+          Compartilhar no WhatsApp
+        </button>
+      </div>
+    </div>
+  )
+}
+
 /* ─── PROJECT PAGE COMPONENT ─── */
 export default function ProjectPage({ config }) {
   const {
@@ -134,6 +257,8 @@ export default function ProjectPage({ config }) {
     bannerImg,
     bannerMobileImg,
     localSponsors,
+    couponCode,
+    instagramUrl,
   } = config
 
   const [isMobile, setIsMobile] = useState(() => window.innerWidth < 640)
@@ -369,6 +494,51 @@ export default function ProjectPage({ config }) {
           </div>
         </div>
       </section>
+
+      {/* ─── CUPOM & VOLUNTARIADO DIGITAL ─── */}
+      {couponCode && (
+        <section className="py-20 sm:py-28 bg-[#eef2e1]" id="cupom">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6">
+            <div className="grid lg:grid-cols-[1fr_1.1fr] gap-12 lg:gap-20 items-center">
+
+              <div>
+                <FadeUp>
+                  <span className="inline-block text-sm font-semibold mb-2" style={{ color: AMBER }}>
+                    Voluntariado Digital
+                  </span>
+                  <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 leading-tight mb-5 tracking-tight">
+                    Espalhe o<br />
+                    <span style={{ color: AMBER }}>movimento.</span>
+                  </h2>
+                  <p className="text-gray-600 text-lg leading-relaxed mb-8 font-medium">
+                    Compartilhe seu cupom exclusivo com amigos. Cada pessoa que você convida amplifica o impacto deste projeto.
+                  </p>
+                </FadeUp>
+
+                <div className="space-y-4">
+                  {[
+                    '2 amigos + 4h/mês = Impacto mensurável',
+                    'Cupom exclusivo por projeto',
+                    'Transformação pessoal garantida',
+                  ].map((item, i) => (
+                    <FadeUp key={i} delay={0.1 + i * 0.07}>
+                      <div className="flex items-center gap-3">
+                        <CheckCheck className="w-5 h-5 shrink-0" strokeWidth={2.5} style={{ color: AMBER }} />
+                        <span className="text-gray-700 font-semibold text-[15px]">{item}</span>
+                      </div>
+                    </FadeUp>
+                  ))}
+                </div>
+              </div>
+
+              <FadeUp delay={0.15}>
+                <CouponBlock code={couponCode} instagramUrl={instagramUrl} />
+              </FadeUp>
+
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ─── FORMULÁRIO FINAL ─── */}
       <section className="py-24 sm:py-32 bg-[#fafafa]" id="formulario">

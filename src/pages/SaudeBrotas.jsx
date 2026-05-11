@@ -40,6 +40,8 @@ const config = {
   galleryImg,
   bannerImg,
   bannerMobileImg,
+  couponCode: 'CURADOABEM',
+  instagramUrl: 'https://www.instagram.com/curadoabem',
 
   localSponsors: ['Farmácia Parceira', 'Clínica Local', 'Faculdade de Medicina', 'Laboratório XYZ'],
 }
