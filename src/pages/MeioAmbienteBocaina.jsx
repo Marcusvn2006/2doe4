@@ -24,9 +24,9 @@ const config = {
   ],
 
   helpOptions: [
-    { icon: '🌱', title: 'Mutirões de plantio', text: 'Participe dos nossos plantios de mudas nativas e reflorestamento de áreas degradadas. Sem experiência necessária — só boa vontade.' },
-    { icon: '📚', title: 'Educação ambiental', text: 'Vá às escolas, dê palestras e oficinas sobre preservação, reciclagem e impacto ambiental para crianças e jovens.' },
-    { icon: '📊', title: 'Dados e relatórios ESG', text: 'Ajude a coletar, organizar e comunicar dados de impacto para empresas parceiras que precisam comprovar suas metas de sustentabilidade.' },
+    { icon: '🌱', title: 'Voluntário de plantio e reflorestamento', text: 'Plante mudas nativas, recupere áreas degradadas e participe de mutirões de limpeza em rios e trilhas. Nenhuma experiência é exigida — só a vontade de deixar o planeta um pouco melhor do que você encontrou.' },
+    { icon: '📚', title: 'Educador e comunicador ambiental', text: 'Leve palestras e oficinas de sustentabilidade a escolas públicas, empresas e eventos. Ensine sobre reciclagem, nascentes e biodiversidade — porque a transformação começa na consciência de uma criança.' },
+    { icon: '📊', title: 'Analista de impacto e ESG', text: 'Colete dados de campo, monte relatórios de carbono fixado e área recuperada, e ajude empresas parceiras a comprovar suas metas ESG com números reais. Sua habilidade analítica tem valor ambiental concreto.' },
   ],
 
   impactNums: [

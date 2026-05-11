@@ -131,29 +131,29 @@ const BENEFITS = ['ofertas', 'conteúdos', 'utilidades', 'hacks', 'vouchers', 'n
 
 /* ─── COUPON BLOCK ─── */
 function CouponBlock({ code, instagramUrl }) {
-  const [copied,   setCopied]   = useState(false)
-  const [igHover,  setIgHover]  = useState(false)
+  const [copied, setCopied] = useState(false)
+  const [igHover, setIgHover] = useState(false)
 
   const copy = () => {
     navigator.clipboard.writeText(code)
     setCopied(true)
-    toast.success('Cupom copiado! 🎉', { description: 'Agora compartilhe com seus amigos.' })
+    toast.success('Cupom copiado! 🎉', { description: 'Compartilhe com seus amigos.' })
     setTimeout(() => setCopied(false), 2500)
   }
 
   const share = () => {
-    const msg = `Use meu cupom *${code}* no 2Doe4 e entre no movimento de voluntariado! 💚\nCadastre-se em: 2doe4.com.br`
+    const msg = `Use meu cupom *${code}* no 2Doe4 e entre no movimento! 💚\n2doe4.com.br`
     window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`, '_blank')
   }
 
   return (
-    <div className="bg-[#7B9469] rounded-3xl p-8 sm:p-10 shadow-xl border border-[#8AA178]">
+    <div className="rounded-3xl overflow-hidden shadow-xl" style={{ background: BRAND }}>
 
       {/* ── Instagram CTA ── */}
       {instagramUrl && (
-        <div className="text-center mb-8">
-          <p className="text-white/60 text-xs font-bold uppercase tracking-widest mb-5">
-            Siga e ative seus benefícios
+        <div className="px-8 pt-8 pb-6 text-center border-b border-white/20">
+          <p className="text-white/70 text-[10px] font-bold uppercase tracking-[0.2em] mb-4">
+            Canal exclusivo · Siga agora
           </p>
 
           <a
@@ -165,76 +165,80 @@ function CouponBlock({ code, instagramUrl }) {
             style={{
               display: 'inline-flex',
               alignItems: 'center',
-              gap: '10px',
-              padding: '14px 28px',
-              borderRadius: '14px',
-              fontWeight: 700,
-              fontSize: '15px',
+              gap: '12px',
+              padding: '16px 32px',
+              borderRadius: '16px',
+              fontWeight: 800,
+              fontSize: '16px',
               color: '#fff',
-              background: 'linear-gradient(135deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%)',
+              background: AMBER,
               boxShadow: igHover
-                ? '0 0 0 3px rgba(252,180,69,0.35), 0 12px 32px rgba(253,29,29,0.45)'
-                : '0 4px 16px rgba(0,0,0,0.2)',
-              transform: igHover ? 'scale(1.05) translateY(-2px)' : 'scale(1) translateY(0)',
+                ? '0 0 0 4px rgba(255,160,1,0.3), 0 16px 40px rgba(255,160,1,0.4)'
+                : '0 4px 20px rgba(255,160,1,0.25)',
+              transform: igHover ? 'scale(1.04) translateY(-2px)' : 'scale(1) translateY(0)',
               transition: 'all 0.28s cubic-bezier(0.22,1,0.36,1)',
               textDecoration: 'none',
+              width: '100%',
+              justifyContent: 'center',
             }}
           >
-            <IgIcon size={20} />
+            <IgIcon size={22} />
             Seguir no Instagram
           </a>
 
-          {/* Benefit badges */}
           <div className="flex flex-wrap gap-2 justify-center mt-5">
             {BENEFITS.map(b => (
-              <span
-                key={b}
-                className="bg-white/15 hover:bg-white/25 text-white text-[11px] font-semibold px-3 py-1 rounded-full transition-colors duration-200 cursor-default"
-              >
+              <span key={b} className="text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full border border-white/30 text-white/80">
                 {b}
               </span>
             ))}
           </div>
-          <p className="text-white/40 text-[11px] mt-3">
-            Ative tudo isso seguindo o perfil acima
-          </p>
         </div>
       )}
 
-      <hr className="border-white/20 mb-8" />
-
       {/* ── Cupom ── */}
-      <p className="text-white/60 text-xs font-bold uppercase tracking-widest text-center mb-4">
-        🎟 Seu cupom exclusivo
-      </p>
-
-      <div
-        onClick={copy}
-        className="group cursor-pointer bg-[#eef2e1] border-2 border-dashed border-[#FFA001]/60 hover:border-[#FFA001] rounded-2xl px-8 py-7 mb-6 transition-all duration-200 hover:bg-[#FFA001]/10 active:scale-[0.98]"
-      >
-        <p className="text-3xl sm:text-4xl font-black tracking-[0.15em] text-gray-900 uppercase font-mono group-hover:text-[#FFA001] transition-colors duration-200">
-          {code}
+      <div className="px-8 py-7">
+        <p className="text-white/70 text-[10px] font-bold uppercase tracking-[0.2em] mb-5 text-center">
+          🎟 Seu cupom exclusivo · Clique para copiar
         </p>
-        <p className="text-gray-500 text-xs mt-3 group-hover:text-[#FFA001] transition-colors">
-          {copied ? '✓ Copiado com sucesso!' : 'Clique para copiar'}
-        </p>
-      </div>
 
-      <div className="flex flex-col sm:flex-row gap-3 justify-center">
-        <button
+        <div
           onClick={copy}
-          className="flex items-center justify-center gap-2 bg-white hover:bg-gray-50 text-gray-900 font-bold px-6 py-3.5 rounded-xl transition-all duration-200 text-sm shadow-sm"
+          className="group cursor-pointer rounded-2xl mb-5 transition-all duration-200 active:scale-[0.97]"
+          style={{
+            border: copied ? '2px solid #22c55e' : '2px dashed rgba(255,255,255,0.4)',
+            background: copied ? 'rgba(34,197,94,0.15)' : 'rgba(255,255,255,0.1)',
+            padding: '28px 24px',
+            textAlign: 'center',
+          }}
         >
-          <Copy className="w-4 h-4" />
-          {copied ? 'Copiado!' : 'Copiar cupom'}
-        </button>
-        <button
-          onClick={share}
-          className="flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold px-6 py-3.5 rounded-xl transition-all duration-200 text-sm"
-        >
-          <Share2 className="w-4 h-4" />
-          Compartilhar no WhatsApp
-        </button>
+          <p className="text-4xl sm:text-5xl font-black tracking-[0.12em] uppercase font-mono transition-colors duration-200"
+            style={{ color: copied ? '#22c55e' : AMBER }}>
+            {code}
+          </p>
+          <p className="text-xs mt-3 font-semibold transition-colors duration-200"
+            style={{ color: copied ? '#22c55e' : 'rgba(255,255,255,0.55)' }}>
+            {copied ? '✓ Copiado com sucesso!' : 'toque para copiar'}
+          </p>
+        </div>
+
+        <div className="flex flex-col sm:flex-row gap-3">
+          <button
+            onClick={copy}
+            className="flex-1 flex items-center justify-center gap-2 font-bold py-3.5 rounded-xl text-sm transition-all duration-200 hover:opacity-90 active:scale-[0.97]"
+            style={{ background: 'rgba(255,255,255,0.2)', color: '#fff', border: '1px solid rgba(255,255,255,0.3)' }}
+          >
+            <Copy className="w-4 h-4" />
+            {copied ? 'Copiado!' : 'Copiar cupom'}
+          </button>
+          <button
+            onClick={share}
+            className="flex-1 flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold py-3.5 rounded-xl transition-all duration-200 text-sm active:scale-[0.97]"
+          >
+            <Share2 className="w-4 h-4" />
+            Enviar no WhatsApp
+          </button>
+        </div>
       </div>
     </div>
   )
@@ -328,11 +332,12 @@ export default function ProjectPage({ config }) {
                   Quero participar
                 </a>
                 <a
-                  href="#sobre-projeto"
-                  className="inline-flex items-center justify-center border-2 text-sm font-bold px-7 py-4 rounded-[0.8rem] transition-all duration-200 bg-white/70 hover:bg-white"
+                  href="#cupom"
+                  className="inline-flex items-center gap-2 border-2 text-sm font-bold px-7 py-4 rounded-[0.8rem] transition-all duration-200 bg-white/70 hover:bg-white"
                   style={{ borderColor: BRAND, color: BRAND }}
                 >
-                  Saiba mais
+                  <IgIcon size={15} />
+                  Canal exclusivo
                 </a>
               </div>
             </FadeUp>
@@ -357,7 +362,7 @@ export default function ProjectPage({ config }) {
                 </p>
               </FadeUp>
 
-              <div className="space-y-4">
+              <div className="space-y-4 mb-8">
                 {impactNums.map((impact, i) => (
                   <FadeUp key={i} delay={0.15 + i * 0.05}>
                     <div className="flex items-center gap-3">
@@ -370,6 +375,29 @@ export default function ProjectPage({ config }) {
                   </FadeUp>
                 ))}
               </div>
+
+              <FadeUp delay={0.3}>
+                <div className="flex flex-wrap gap-3">
+                  {instagramUrl && (
+                    <a
+                      href={instagramUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 font-bold px-5 py-3 rounded-xl text-sm transition-all duration-200 hover:opacity-90 active:scale-95"
+                      style={{ background: AMBER, color: '#fff' }}
+                    >
+                      <IgIcon size={15} /> Canal exclusivo
+                    </a>
+                  )}
+                  <a
+                    href="#cupom"
+                    className="inline-flex items-center gap-2 font-bold px-5 py-3 rounded-xl text-sm transition-all duration-200 hover:bg-[#dde8cc] active:scale-95"
+                    style={{ background: '#eef2e1', color: BRAND, border: `1px solid ${BRAND}40` }}
+                  >
+                    🎟 Ver cupom exclusivo
+                  </a>
+                </div>
+              </FadeUp>
             </div>
 
             <FadeUp delay={0.2} className="w-full">
@@ -437,6 +465,36 @@ export default function ProjectPage({ config }) {
               </FadeUp>
             ))}
           </div>
+
+          {/* CTA para canal Instagram + cupom */}
+          <FadeUp delay={0.2}>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 rounded-2xl p-6 sm:p-8" style={{ background: BRAND }}>
+              <div className="text-center sm:text-left">
+                <p className="text-white font-extrabold text-base sm:text-lg">Siga o canal exclusivo e pegue seu cupom</p>
+                <p className="text-white/60 text-sm mt-1">Ofertas, hacks, conteúdos e vouchers toda semana.</p>
+              </div>
+              <div className="flex items-center gap-3 shrink-0">
+                {instagramUrl && (
+                  <a
+                    href={instagramUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 font-bold px-5 py-3 rounded-xl text-sm transition-all duration-200 hover:opacity-90 active:scale-95"
+                    style={{ background: AMBER, color: '#fff' }}
+                  >
+                    <IgIcon size={15} /> Instagram
+                  </a>
+                )}
+                <a
+                  href="#cupom"
+                  className="inline-flex items-center gap-2 font-bold px-5 py-3 rounded-xl text-sm transition-all duration-200 hover:opacity-90 active:scale-95"
+                  style={{ background: 'rgba(255,255,255,0.2)', color: '#fff', border: '1px solid rgba(255,255,255,0.3)' }}
+                >
+                  🎟 Ver cupom
+                </a>
+              </div>
+            </div>
+          </FadeUp>
         </div>
       </section>
 
@@ -458,7 +516,7 @@ export default function ProjectPage({ config }) {
                   Estes parceiros fortalecem a base do projeto, garantindo que o impacto chegue a quem precisa.
                 </p>
 
-                <div className="flex flex-wrap gap-3">
+                <div className="flex flex-wrap gap-3 mb-6">
                   {localSponsors.map((s, i) => (
                     <div
                       key={i}
@@ -473,6 +531,27 @@ export default function ProjectPage({ config }) {
                     style={{ borderColor: BRAND, color: BRAND }}
                   >
                     + Seja parceiro
+                  </a>
+                </div>
+
+                <div className="flex flex-wrap gap-3">
+                  {instagramUrl && (
+                    <a
+                      href={instagramUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 font-bold px-5 py-3 rounded-xl text-sm transition-all duration-200 hover:opacity-90 active:scale-95"
+                      style={{ background: AMBER, color: '#fff' }}
+                    >
+                      <IgIcon size={15} /> Canal exclusivo
+                    </a>
+                  )}
+                  <a
+                    href="#cupom"
+                    className="inline-flex items-center gap-2 font-bold px-5 py-3 rounded-xl text-sm transition-all duration-200 hover:bg-[#dde8cc] active:scale-95"
+                    style={{ background: '#eef2e1', color: BRAND, border: `1px solid ${BRAND}40` }}
+                  >
+                    🎟 Cupom exclusivo
                   </a>
                 </div>
               </FadeUp>
@@ -572,6 +651,40 @@ export default function ProjectPage({ config }) {
                   </FadeUp>
                 ))}
               </div>
+
+              <FadeUp delay={0.35}>
+                <div className="flex flex-wrap gap-3">
+                  <a
+                    href="https://www.instagram.com/gptdoabem?igsh=MXF3eG80MnhvN2JycQ=="
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2.5 font-bold px-6 py-3.5 rounded-xl text-white text-sm transition-all duration-200 hover:opacity-90 hover:scale-105 active:scale-95 shadow-md"
+                    style={{ backgroundColor: AMBER }}
+                  >
+                    <IgIcon size={16} />
+                    Seguir @gptdoabem
+                  </a>
+                  {instagramUrl && (
+                    <a
+                      href={instagramUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2.5 font-bold px-6 py-3.5 rounded-xl text-sm transition-all duration-200 hover:opacity-90 active:scale-95"
+                      style={{ background: BRAND, color: '#fff' }}
+                    >
+                      <IgIcon size={16} />
+                      Canal exclusivo
+                    </a>
+                  )}
+                  <a
+                    href="#cupom"
+                    className="inline-flex items-center gap-2.5 font-bold px-6 py-3.5 rounded-xl text-sm transition-all duration-200 hover:bg-[#dde8cc] active:scale-95"
+                    style={{ background: '#eef2e1', color: BRAND, border: `1px solid ${BRAND}40` }}
+                  >
+                    🎟 Ver cupom
+                  </a>
+                </div>
+              </FadeUp>
             </div>
 
             <FadeUp delay={0.2}>

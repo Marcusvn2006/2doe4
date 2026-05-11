@@ -24,9 +24,9 @@ const config = {
   ],
 
   helpOptions: [
-    { icon: '🏃', title: 'Treinador voluntário', text: 'Se você pratica ou ensina esporte, aqui é o seu lugar. Treinos de futebol, basquete, vôlei, atletismo e outras modalidades.' },
-    { icon: '📣', title: 'Apoio nos eventos', text: 'Organize e apoie campeonatos, festivais esportivos e dias de integração que movimentam a comunidade.' },
-    { icon: '🎽', title: 'Captação de recursos', text: 'Ajude a arrecadar uniformes, equipamentos, materiais esportivos e patrocínios para os times.' },
+    { icon: '🏃', title: 'Treinador e educador esportivo', text: 'Se você pratica, ensina ou apenas ama esporte, este é o seu lugar. Conduza treinos de futebol, basquete, vôlei ou atletismo — e veja jovens em situação de risco descobrirem disciplina, propósito e sonhos dentro de uma quadra.' },
+    { icon: '📣', title: 'Organizador de eventos e torneios', text: 'Planeje e execute campeonatos, dias de integração e festivais esportivos que viram o maior evento da vida de muitas crianças. Logística, comunicação, arbitragem — cada função importa.' },
+    { icon: '🎽', title: 'Captador de recursos e patrocínio', text: 'Um uniforme novo pode mudar a autoestima de um atleta. Ajude a arrecadar chuteiras, bolas, kits esportivos e patrocínios que mantêm os times na ativa e abrem portas para competições regionais.' },
   ],
 
   impactNums: [

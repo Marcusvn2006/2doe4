@@ -24,9 +24,9 @@ const config = {
   ],
 
   helpOptions: [
-    { icon: '👨‍⚕️', title: 'Profissionais de saúde', text: 'Médicos, enfermeiros, psicólogos, nutricionistas, fisioterapeutas e estudantes das áreas contribuem diretamente nas ações.' },
-    { icon: '📣', title: 'Comunicação e divulgação', text: 'Ajude a ampliar o alcance do projeto nas redes sociais, produzindo conteúdo ou levando o 2Doe4 para sua universidade.' },
-    { icon: '🚗', title: 'Apoio logístico', text: 'Transporte de materiais, organização de eventos e suporte operacional nas ações presenciais.' },
+    { icon: '👨‍⚕️', title: 'Profissionais e estudantes de saúde', text: 'Médicos, enfermeiros, psicólogos, nutricionistas e estudantes aplicam seus conhecimentos em consultas, rastreios e oficinas educativas direto nas comunidades — sem burocracia, com impacto imediato.' },
+    { icon: '📣', title: 'Criadores de conteúdo e comunicação', text: 'Fotografe as ações, produza reels, escreva posts ou leve a história do projeto para sua faculdade ou empresa. Cada compartilhamento salva vidas ao alcançar quem ainda não conhece o projeto.' },
+    { icon: '🚗', title: 'Voluntário de apoio e logística', text: 'Não é da área da saúde? Sem problema. Você pode organizar kits, montar estandes, orientar o público e garantir que cada ação aconteça com excelência. Sua presença muda tudo.' },
   ],
 
   impactNums: [

@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { Toaster } from 'sonner'
 import Header from './components/Header'
 import Footer from './components/Footer'
+import CouponBar from './components/CouponBar'
 import Home from './pages/Home'
 import SaudeBrotas from './pages/SaudeBrotas'
 import EquoterapiaBoituva from './pages/EquoterapiaBoituva'
@@ -17,6 +18,7 @@ function Layout() {
   return (
     <>
       {!isManutencao && <Header />}
+      {!isManutencao && <CouponBar />}
       <main className="overflow-x-clip">
         <Routes>
           <Route path="/" element={<Home />} />

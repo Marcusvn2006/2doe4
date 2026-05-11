@@ -24,9 +24,9 @@ const config = {
   ],
 
   helpOptions: [
-    { icon: '🐎', title: 'Auxiliar nas sessões', text: 'Acompanhe as sessões ao lado dos terapeutas, auxiliando os pacientes e cuidando dos animais durante as atividades.' },
-    { icon: '💊', title: 'Profissionais de saúde', text: 'Fisioterapeutas, psicólogos, fonoaudiólogos e terapeutas ocupacionais complementam o trabalho da equipe central.' },
-    { icon: '📸', title: 'Documentação e captação', text: 'Fotografe, produza conteúdo e apoie a captação de recursos e patrocinadores para manter e expandir o projeto.' },
+    { icon: '🐎', title: 'Auxiliar de sessão com cavalos', text: 'Fique ao lado dos pacientes durante as sessões, segurando as rédeas, fazendo a condução e criando o ambiente seguro que permite cada avanço terapêutico. Você não precisa de experiência — só sensibilidade e presença.' },
+    { icon: '💊', title: 'Terapeuta e profissional de saúde', text: 'Fisioterapeutas, psicólogos, fonoaudiólogos e terapeutas ocupacionais amplificam o efeito de cada sessão com avaliações, registros de evolução e intervenções especializadas que mudam trajetórias de vida.' },
+    { icon: '📸', title: 'Documentação, mídia e captação', text: 'Registre as transformações em foto e vídeo, produza conteúdo para redes sociais e ajude a atrair novos patrocinadores. Cada história bem contada garante que mais crianças tenham acesso ao projeto.' },
   ],
 
   impactNums: [

@@ -24,6 +24,16 @@ import imgMeioAmbiente from '../assets/img/MeioAmbiente.webp'
 const BRAND = '#7B9469'
 const AMBER = '#FFA001'
 
+function IgIcon({ size = 15 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+    </svg>
+  )
+}
+
 /* ─── FADE-UP ANIMATION WRAPPER ─── */
 function FadeUp({ children, delay = 0, className }) {
   return (
@@ -50,10 +60,10 @@ const faqs = [
 ]
 
 const projects = [
-  { slug: '/saude',         title: 'Saúde',         desc: 'Campanhas preventivas, atendimentos comunitários e educação em saúde para quem mais precisa.', color: 'from-teal-600 to-teal-800', badge: 'bg-teal-100 text-teal-800', icon: '🏥', img: imgSaude },
-  { slug: '/equoterapia',   title: 'Equoterapia',   desc: 'Reabilitação por meio da interação com cavalos, atendendo crianças e adultos com deficiência.', color: 'from-amber-500 to-amber-700', badge: 'bg-amber-100 text-amber-800', icon: '🐴', img: imgEquoterapia },
-  { slug: '/esporte',       title: 'Esporte',       desc: 'Inclusão social pelo esporte, formando atletas e criando oportunidades para jovens em situação de risco.', color: 'from-blue-600 to-blue-800', badge: 'bg-blue-100 text-blue-800', icon: '⚽', img: imgEsporte },
-  { slug: '/meio-ambiente', title: 'Meio Ambiente', desc: 'Reflorestamento, educação ambiental e ações sustentáveis conectadas à agenda ESG.', color: 'from-green-700 to-green-900', badge: 'bg-green-100 text-green-800', icon: '🌿', img: imgMeioAmbiente },
+  { slug: '/saude',         title: 'Saúde',         desc: 'Campanhas preventivas, atendimentos comunitários e educação em saúde para quem mais precisa.', color: 'from-teal-600 to-teal-800', badge: 'bg-teal-100 text-teal-800', icon: '🏥', img: imgSaude,        ig: 'https://www.instagram.com/curadoabem' },
+  { slug: '/equoterapia',   title: 'Equoterapia',   desc: 'Reabilitação por meio da interação com cavalos, atendendo crianças e adultos com deficiência.', color: 'from-amber-500 to-amber-700', badge: 'bg-amber-100 text-amber-800', icon: '🐴', img: imgEquoterapia,  ig: 'https://www.instagram.com/powerdoabem' },
+  { slug: '/esporte',       title: 'Esporte',       desc: 'Inclusão social pelo esporte, formando atletas e criando oportunidades para jovens em situação de risco.', color: 'from-blue-600 to-blue-800', badge: 'bg-blue-100 text-blue-800', icon: '⚽', img: imgEsporte,      ig: 'https://www.instagram.com/ultradoabem' },
+  { slug: '/meio-ambiente', title: 'Meio Ambiente', desc: 'Reflorestamento, educação ambiental e ações sustentáveis conectadas à agenda ESG.', color: 'from-green-700 to-green-900', badge: 'bg-green-100 text-green-800', icon: '🌿', img: imgMeioAmbiente, ig: 'https://www.instagram.com/verdedoabem' },
 ]
 
 const testimonials = [
@@ -232,6 +242,36 @@ function RegisterForm() {
   )
 }
 
+/* ─── HOME COUPON CHIP ─── */
+function HomeCouponChip({ label, code, color, path }) {
+  const [copied, setCopied] = useState(false)
+  const copy = (e) => {
+    e.preventDefault()
+    navigator.clipboard.writeText(code)
+    setCopied(true)
+    toast.success(`Cupom ${code} copiado!`)
+    setTimeout(() => setCopied(false), 2000)
+  }
+  return (
+    <Link
+      to={path}
+      className="group flex items-center justify-between gap-2 bg-white border border-gray-100 hover:border-gray-200 rounded-xl px-3 py-2.5 shadow-sm transition-all duration-150 hover:shadow-md"
+    >
+      <div className="flex items-center gap-2 min-w-0">
+        <span className="w-2 h-2 rounded-full shrink-0" style={{ background: color }} />
+        <span className="text-xs font-bold text-gray-700 truncate">{label}</span>
+      </div>
+      <button
+        onClick={copy}
+        className="flex items-center gap-1 bg-gray-50 hover:bg-amber-50 border border-gray-200 hover:border-amber-300 text-gray-600 hover:text-amber-700 font-mono text-[10px] font-bold px-2 py-1 rounded-lg transition-all duration-150 shrink-0"
+      >
+        {copied ? <Check className="w-3 h-3 text-green-500" /> : <Tag className="w-3 h-3" />}
+        {copied ? 'Copiado' : code}
+      </button>
+    </Link>
+  )
+}
+
 /* ─── HOME PAGE ─── */
 const scrollTo = (id) => {
   const el = document.getElementById(id)
@@ -256,24 +296,32 @@ export default function Home() {
           className="relative w-full max-w-[1600px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-24 pt-28 sm:pt-32 pb-10 sm:pb-20"
         >
           <div className="max-w-[460px] mx-auto sm:mx-0 text-center sm:text-left sm:pl-[65px]">
+            <motion.p
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="text-sm font-semibold mb-2"
+              style={{ color: AMBER }}
+            >
+              Hub de Transformação Social
+            </motion.p>
+
             <motion.h1
               initial={{ opacity: 0, y: 28 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-              className="text-3xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight text-gray-900 mb-4 sm:mb-5"
+              className="text-[2rem] sm:text-5xl lg:text-6xl font-bold leading-[1.15] tracking-tight text-gray-900 mb-3 sm:mb-4"
             >
-              Doe seu tempo.<br />
-              Receba muito{' '}
-              <span style={{ color: AMBER }}>mais<br />de volta.</span>
+              Voluntariado é <span style={{ color: AMBER }}>Nossa<br className="hidden sm:block" /> Corrida</span>
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.15 }}
-              className="text-gray-700 text-sm sm:text-lg leading-relaxed mb-6 sm:mb-8"
+              transition={{ duration: 0.6, delay: 0.12 }}
+              className="text-gray-700 text-sm sm:text-base leading-relaxed mb-6 sm:mb-8 font-medium"
             >
-              O 2Doe4 conecta você a projetos sociais reais, em cidades reais — com impacto que você pode ver e vantagens que você vai sentir.
+              através do Esporte, Educação e Tecnologia — conectando duplas de amigos a 4h mensais de voluntariado com impacto mensurável.
             </motion.p>
 
             <motion.div
@@ -356,9 +404,36 @@ export default function Home() {
               </FadeUp>
 
               <FadeUp delay={0.2}>
-                <p className="font-extrabold text-xl tracking-tight" style={{ color: BRAND }}>
+                <p className="font-extrabold text-xl tracking-tight mb-6" style={{ color: BRAND }}>
                   Dois amigos. Quatro horas. Um impacto.
                 </p>
+              </FadeUp>
+
+              {/* @gptdoabem + Cupons */}
+              <FadeUp delay={0.25}>
+                <a
+                  href="https://www.instagram.com/gptdoabem?igsh=MXF3eG80MnhvN2JycQ=="
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 font-bold px-5 py-3 rounded-xl text-sm transition-all duration-200 hover:opacity-90 active:scale-95 shadow-sm mb-5"
+                  style={{ background: AMBER, color: '#fff' }}
+                >
+                  <IgIcon size={15} /> Seguir @gptdoabem
+                </a>
+              </FadeUp>
+
+              <FadeUp delay={0.3}>
+                <p className="text-[11px] font-bold uppercase tracking-widest text-gray-400 mb-3">🎟 Cupons exclusivos por projeto</p>
+                <div className="grid grid-cols-2 gap-2">
+                  {[
+                    { label: 'Saúde',         code: 'CURADOABEM',  color: '#0D9488', path: '/saude' },
+                    { label: 'Equoterapia',   code: 'POWERDOABEM', color: '#D97706', path: '/equoterapia' },
+                    { label: 'Esporte',       code: 'ULTRADOABEM', color: '#2563EB', path: '/esporte' },
+                    { label: 'Meio Ambiente', code: 'VERDEDOABEM', color: '#166534', path: '/meio-ambiente' },
+                  ].map(({ label, code, color, path }) => (
+                    <HomeCouponChip key={code} label={label} code={code} color={color} path={path} />
+                  ))}
+                </div>
               </FadeUp>
             </div>
 
@@ -412,7 +487,7 @@ export default function Home() {
               <p className="text-sm sm:text-base font-semibold uppercase tracking-widest text-amber-500 mb-3">Nossas áreas de atuação</p>
             </FadeUp>
             <FadeUp delay={0.05}>
-              <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-4 tracking-tight">4 projetos. 4 cidades. Um único propósito</h2>
+              <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-4 tracking-tight">Nossos projetos. Um único propósito.</h2>
             </FadeUp>
             <FadeUp delay={0.1}>
               <p className="text-lg text-gray-500">Escolha a causa que faz mais sentido pra você — ou participe de todas.</p>
@@ -422,14 +497,29 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mb-16">
             {projects.map((p, i) => (
               <FadeUp key={p.slug} delay={i * 0.1} className="h-full">
-                <Link to={p.slug} className="group relative block w-full h-[400px] rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
-                  <img src={p.img} alt={p.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300" />
-                  <div className="absolute inset-x-0 bottom-0 p-8 flex flex-col justify-end">
-                    <h3 className="text-2xl font-bold text-white mb-2">{p.title}</h3>
-                    <p className="text-gray-200 text-sm line-clamp-3">{p.desc}</p>
+                <div className="relative group w-full h-[400px] rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
+                  <Link to={p.slug} className="absolute inset-0">
+                    <img src={p.img} alt={p.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300" />
+                  </Link>
+
+                  <div className="absolute inset-x-0 bottom-0 p-6 flex flex-col justify-end pointer-events-none">
+                    <h3 className="text-2xl font-bold text-white mb-1">{p.title}</h3>
+                    <p className="text-gray-200 text-sm line-clamp-2 mb-4">{p.desc}</p>
+
+                    {/* Instagram button */}
+                    <a
+                      href={p.ig}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={e => e.stopPropagation()}
+                      className="pointer-events-auto self-start flex items-center gap-2 bg-[#FFA001] hover:bg-[#e69000] text-white text-xs font-bold px-4 py-2 rounded-xl transition-all duration-200 hover:scale-105 active:scale-95 shadow-lg"
+                    >
+                      <IgIcon size={13} />
+                      Seguir no Instagram
+                    </a>
                   </div>
-                </Link>
+                </div>
               </FadeUp>
             ))}
           </div>
@@ -595,7 +685,7 @@ export default function Home() {
                   </div>
                   <h3 className="text-2xl sm:text-3xl font-extrabold text-white mb-3">Expansão Contínua</h3>
                   <p className="text-gray-300 text-base sm:text-lg leading-relaxed font-medium">
-                    O que começou em 4 cidades do interior paulista está virando um movimento. Estamos construindo a maior rede de voluntariado inteligente do país.
+                    O 2Doe4 está virando um movimento nacional. Estamos construindo a maior rede de voluntariado inteligente do país.
                   </p>
                 </div>
               </div>
@@ -811,23 +901,23 @@ export default function Home() {
             <div className="lg:pr-8">
               <FadeUp delay={0.05}>
                 <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 leading-tight mb-6 tracking-tight">
-                  Sua ação começa com um<br />passo.
+                  Sua ação começa<br />com um passo.
                 </h2>
               </FadeUp>
               <FadeUp delay={0.1}>
-                <p className="text-gray-500 text-lg leading-relaxed mb-10 max-w-[420px] font-medium">
-                  Cadastre-se gratuitamente e entre para o movimento que está transformando o interior de São Paulo.
+                <p className="text-gray-500 text-lg leading-relaxed mb-8 max-w-[420px] font-medium">
+                  Cadastre-se gratuitamente e entre para o movimento nacional de voluntariado inteligente.
                 </p>
               </FadeUp>
 
-              <div className="space-y-4">
+              <div className="space-y-4 mb-8">
                 {[
+                  'Cadastro 100% gratuito',
                   'Cupons e descontos exclusivos de parceiros',
-                  'Cupons e descontos exclusivos de parceiros',
-                  'Cupons e descontos exclusivos de parceiros',
-                  'Cupons e descontos exclusivos de parceiros',
-                  'Cupons e descontos exclusivos de parceiros',
-                  'Cupons e descontos exclusivos de parceiros',
+                  'Certificado oficial após cada ação',
+                  'Comunidade ativa no WhatsApp',
+                  'Você define sua disponibilidade',
+                  'Impacto mensurável a cada mês',
                 ].map((p, i) => (
                   <FadeUp key={i} delay={0.15 + i * 0.05}>
                     <div className="flex items-center gap-3">
@@ -837,6 +927,19 @@ export default function Home() {
                   </FadeUp>
                 ))}
               </div>
+
+              <FadeUp delay={0.5}>
+                <a
+                  href="https://www.instagram.com/gptdoabem?igsh=MXF3eG80MnhvN2JycQ=="
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2.5 font-bold px-6 py-3.5 rounded-xl text-white text-sm transition-all duration-200 hover:opacity-90 hover:scale-105 active:scale-95 shadow-md"
+                  style={{ backgroundColor: '#FFA001' }}
+                >
+                  <IgIcon size={16} />
+                  Seguir @gptdoabem no Instagram
+                </a>
+              </FadeUp>
             </div>
 
             <FadeUp delay={0.2} className="w-full">
