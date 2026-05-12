@@ -11,6 +11,7 @@ import {
 } from 'lucide-react'
 import { useCounter } from '../hooks/useCounter'
 import { cn } from '../lib/utils'
+import ShareBar from '../components/ShareBar'
 import bannerImg from '../assets/img/banner2doe4.webp'
 import bannerMobileImg from '../assets/img/banner-mobile.webp'
 import projectImg from '../assets/img/imgsection.webp'
@@ -345,6 +346,15 @@ export default function Home() {
                 Conhecer os projetos
               </button>
             </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="mt-4 flex justify-center sm:justify-start"
+            >
+              <ShareBar title="2Doe4 Hub" subtitle="Voluntariado é Nossa Corrida" />
+            </motion.div>
           </div>
         </div>
       </section>
@@ -411,15 +421,18 @@ export default function Home() {
 
               {/* @gptdoabem + Cupons */}
               <FadeUp delay={0.25}>
-                <a
-                  href="https://www.instagram.com/gptdoabem"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 font-bold px-5 py-3 rounded-xl text-sm transition-all duration-200 hover:opacity-90 active:scale-95 shadow-sm mb-5"
-                  style={{ background: AMBER, color: '#fff' }}
-                >
-                  <IgIcon size={15} /> Seguir @gptdoabem
-                </a>
+                <div className="flex flex-wrap items-center gap-3 mb-5">
+                  <a
+                    href="https://www.instagram.com/gptdoabem"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 font-bold px-5 py-3 rounded-xl text-sm transition-all duration-200 hover:opacity-90 active:scale-95 shadow-sm"
+                    style={{ background: AMBER, color: '#fff' }}
+                  >
+                    <IgIcon size={15} /> Seguir @gptdoabem
+                  </a>
+                  <ShareBar title="2Doe4 Hub" subtitle="Voluntariado é Nossa Corrida" />
+                </div>
               </FadeUp>
 
               <FadeUp delay={0.3}>
