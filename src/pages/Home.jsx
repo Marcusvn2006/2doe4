@@ -73,10 +73,10 @@ const testimonials = [
 ]
 
 const ecosystem = [
-  { icon: Handshake, name: 'DoaBem', desc: 'Plataforma integrada de doações para projetos sociais verificados.', badge: 'Ativo', live: true },
-  { icon: Bot, name: 'GPTDoaBem', desc: 'IA que conecta doadores e voluntários às causas certas.', badge: 'Ativo', live: true },
-  { icon: TrendingUp, name: 'bao2.com.br', desc: 'Ferramenta de monetização inteligente para parceiros e afiliados.', badge: 'Em breve', live: false },
-  { icon: Camera, name: 'FotoDoaBem', desc: 'Banco de imagens sociais produzidas durante as ações do ecossistema.', badge: 'Em breve', live: false },
+  { icon: Handshake, name: 'DoaBem',      desc: 'Plataforma integrada de doações para projetos sociais verificados.', badge: 'Ativo', live: true, href: 'https://doabem.com.br' },
+  { icon: Bot,       name: 'GPTDoaBem',   desc: 'IA que conecta doadores e voluntários às causas certas.',            badge: 'Ativo', live: true, href: 'https://gptdoabem.com.br' },
+  { icon: TrendingUp,name: 'bao2.com.br', desc: 'Ferramenta de monetização inteligente para parceiros e afiliados.', badge: 'Ativo', live: true, href: 'https://bao2.com.br' },
+  { icon: Camera,    name: 'FotoDoaBem',  desc: 'Banco de imagens sociais produzidas durante as ações do ecossistema.', badge: 'Ativo', live: true, href: 'https://fotodoabem.com.br' },
 ]
 
 const benefits = [
@@ -412,7 +412,7 @@ export default function Home() {
               {/* @gptdoabem + Cupons */}
               <FadeUp delay={0.25}>
                 <a
-                  href="https://www.instagram.com/gptdoabem?igsh=MXF3eG80MnhvN2JycQ=="
+                  href="https://www.instagram.com/gptdoabem"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 font-bold px-5 py-3 rounded-xl text-sm transition-all duration-200 hover:opacity-90 active:scale-95 shadow-sm mb-5"
@@ -786,22 +786,28 @@ export default function Home() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {ecosystem.map((e, i) => (
               <FadeUp key={i} delay={i * 0.1}>
-                <motion.div
+                <motion.a
+                  href={e.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   whileHover={{ y: -4 }}
                   transition={{ duration: 0.2 }}
-                  className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 hover:shadow-md hover:border-brand-200 transition-all duration-300 h-full flex flex-col"
+                  className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 hover:shadow-md hover:border-brand-200 transition-all duration-300 h-full flex flex-col cursor-pointer"
                 >
                   <div className={cn('w-12 h-12 rounded-xl flex items-center justify-center mb-4', i % 2 === 0 ? 'bg-brand-50' : 'bg-orange-50')}>
                     <e.icon className={cn('w-5 h-5', i % 2 === 0 ? 'text-brand-700' : 'text-cta-500')} />
                   </div>
                   <h3 className="font-bold text-gray-900 mb-2">{e.name}</h3>
                   <p className="text-gray-500 text-sm leading-relaxed flex-1">{e.desc}</p>
-                  <div className="mt-4">
-                    <span className={cn('inline-block text-xs font-semibold px-2.5 py-1 rounded-full', e.live ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-500')}>
+                  <div className="mt-4 flex items-center justify-between">
+                    <span className="inline-block text-xs font-semibold px-2.5 py-1 rounded-full bg-green-100 text-green-700">
                       {e.badge}
                     </span>
+                    <span className="text-xs font-semibold text-gray-400 hover:text-brand-700 transition-colors">
+                      Acessar →
+                    </span>
                   </div>
-                </motion.div>
+                </motion.a>
               </FadeUp>
             ))}
           </div>
@@ -930,7 +936,7 @@ export default function Home() {
 
               <FadeUp delay={0.5}>
                 <a
-                  href="https://www.instagram.com/gptdoabem?igsh=MXF3eG80MnhvN2JycQ=="
+                  href="https://www.instagram.com/gptdoabem"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2.5 font-bold px-6 py-3.5 rounded-xl text-white text-sm transition-all duration-200 hover:opacity-90 hover:scale-105 active:scale-95 shadow-md"
