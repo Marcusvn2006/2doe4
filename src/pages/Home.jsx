@@ -406,16 +406,28 @@ export default function Home() {
               <FadeUp delay={0.15}>
                 <div className="bg-white rounded-2xl border border-[#8AA178]/30 p-6 mb-7 shadow-sm">
                   <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-3">Fórmula simples</p>
-                  <p className="text-gray-900 font-extrabold text-xl mb-1">
-                    2 amigos + 4h/mês = <span style={{ color: AMBER }}>Impacto mensurável</span>
+                  <p className="text-gray-900 font-extrabold text-xl mb-3">
+                    2 amigos + 4h/mês =&nbsp;
+                    <a
+                      href="https://doabem.com.br"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 font-extrabold transition-opacity hover:opacity-80"
+                      style={{ color: AMBER }}
+                    >
+                      @doabem
+                    </a>
                   </p>
-                  <p className="text-gray-400 text-sm mt-1">+ Transformação pessoal garantida</p>
+                  <p className="text-gray-600 text-sm leading-relaxed">
+                    Você transforma uma comunidade. E se transforma no processo.<br />
+                    <span className="text-gray-400">Quem doa tempo, recebe propósito. Quem doa energia, recebe transformação.</span>
+                  </p>
                 </div>
               </FadeUp>
 
               <FadeUp delay={0.2}>
                 <p className="font-extrabold text-xl tracking-tight mb-6" style={{ color: BRAND }}>
-                  Dois amigos. Quatro horas. Um impacto.
+                  Dois amigos. Quatro horas. Um investimento que rende em você.
                 </p>
               </FadeUp>
 
