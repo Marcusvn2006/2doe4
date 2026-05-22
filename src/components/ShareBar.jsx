@@ -10,14 +10,15 @@ function WhatsAppIcon({ size = 18 }) {
   )
 }
 
-export default function ShareBar({ title = '2Doe4', subtitle = 'Hub de Transformação Social' }) {
+export default function ShareBar({ title = '2Doe4', subtitle = 'Hub de Transformação Social', waHref }) {
   const [copied, setCopied] = useState(false)
 
   const url = window.location.href
   const text = `${title} — ${subtitle}`
 
   const shareWa = () => {
-    window.open(`https://wa.me/?text=${encodeURIComponent(text + '\n' + url)}`, '_blank')
+    const link = waHref ?? `https://wa.me/?text=${encodeURIComponent(text + '\n' + url)}`
+    window.open(link, '_blank')
   }
 
   const shareNative = async () => {

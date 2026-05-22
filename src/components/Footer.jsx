@@ -150,7 +150,7 @@ export default function Footer() {
                 <IgIcon size={16} />
               </a>
               {[
-                { icon: WhatsAppIcon,  label: 'WhatsApp', href: 'https://wa.me/5514988388888' },
+                { icon: WhatsAppIcon,  label: 'WhatsApp', href: 'https://wa.me/5514988400000' },
                 { icon: Briefcase,     label: 'LinkedIn', href: '#' },
               ].map(({ icon: Icon, label, href }) => (
                 <a
@@ -168,7 +168,7 @@ export default function Footer() {
             </div>
 
             <div className="mt-5">
-              <ShareBar title="2Doe4 Hub" subtitle="Voluntariado é Nossa Corrida" />
+              <ShareBar title="2Doe4 Hub" subtitle="Voluntariado é Nossa Corrida" waHref="https://wa.me/5514988400000" />
             </div>
           </div>
 
@@ -221,9 +221,9 @@ export default function Footer() {
           <div>
             <p className="text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: '#101828' }}>Contato</p>
             <div className="flex flex-col gap-3">
-              <a href="tel:+5514988388888" className="flex items-center gap-2 text-sm hover:opacity-70 transition-opacity" style={{ color: '#101828' }}>
+              <a href="tel:+5514988400000" className="flex items-center gap-2 text-sm hover:opacity-70 transition-opacity" style={{ color: '#101828' }}>
                 <Phone className="w-4 h-4 shrink-0" />
-                (14) 98838-8888
+                (14) 98840-0000
               </a>
               <a href="mailto:contato@2doe4.com.br" className="flex items-center gap-2 text-sm hover:opacity-70 transition-opacity" style={{ color: '#101828' }}>
                 <Mail className="w-4 h-4 shrink-0" />

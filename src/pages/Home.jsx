@@ -173,7 +173,7 @@ function RegisterForm() {
 
     const causa = values.causa || 'Não informada'
     const msg = `Olá! Quero me cadastrar no 2Doe4 😊\n\n*Nome:* ${values.nome}\n*Cidade:* ${values.cidade}\n*WhatsApp:* ${values.whatsapp}\n*Causa de interesse:* ${causa}`
-    const url = `https://wa.me/5514988388888?text=${encodeURIComponent(msg)}`
+    const url = `https://wa.me/5514988400000?text=${encodeURIComponent(msg)}`
     window.open(url, '_blank')
 
     toast.success('Cadastro enviado! 🎉', {
