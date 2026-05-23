@@ -33,22 +33,28 @@ export default function ShareBar({ title = '2Doe4', subtitle = 'Hub de Transform
   }
 
   return (
-    <div className="flex items-center gap-2">
+    <div
+      className="flex items-center gap-2 px-4 py-2"
+      style={{ borderRadius: 10, background: '#FFA001' }}
+    >
+      <span className="text-sm font-bold whitespace-nowrap" style={{ color: '#fff' }}>
+        Compartilhe →
+      </span>
       <button
         onClick={shareWa}
         title="Compartilhar no WhatsApp"
-        className="w-10 h-10 rounded-full flex items-center justify-center text-white transition-all duration-200 hover:scale-110 active:scale-95 shadow-md"
-        style={{ background: '#25D366' }}
+        className="w-8 h-8 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95"
+        style={{ background: '#fff', color: '#25D366' }}
       >
-        <WhatsAppIcon size={18} />
+        <WhatsAppIcon size={15} />
       </button>
       <button
         onClick={shareNative}
         title={typeof navigator !== 'undefined' && navigator.share ? 'Compartilhar' : 'Copiar link'}
-        className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95 shadow-sm"
-        style={{ background: '#f3f4f6', color: '#374151' }}
+        className="w-8 h-8 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95"
+        style={{ background: '#fff', color: '#FFA001' }}
       >
-        {copied ? <Check className="w-4 h-4 text-green-600" /> : <Share2 className="w-4 h-4" />}
+        {copied ? <Check className="w-3.5 h-3.5" style={{ color: '#25D366' }} /> : <Share2 className="w-3.5 h-3.5" />}
       </button>
     </div>
   )
