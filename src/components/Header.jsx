@@ -83,6 +83,12 @@ const PROJECT_NAV = [
   { label: 'Participar',  hash: 'formulario'     },
 ]
 
+const AULAS_NAV = [
+  { label: 'Aulas com IA', hash: 'aulas-ia'     },
+  { label: 'Cortes',       hash: 'aulas-cortes' },
+  { label: 'Participar',   hash: 'praticar'     },
+]
+
 const PROJECT_PATHS = ['/saude', '/equoterapia', '/esporte', '/meio-ambiente']
 
 function CouponsDropdown() {
@@ -127,7 +133,8 @@ export default function Header() {
   const location   = useLocation()
 
   const isProject  = PROJECT_PATHS.includes(location.pathname)
-  const navLinks   = isProject ? PROJECT_NAV : HOME_NAV
+  const isAulas    = location.pathname === '/aulas'
+  const navLinks   = isProject ? PROJECT_NAV : isAulas ? AULAS_NAV : HOME_NAV
 
   // Scroll to hash after navigation
   useEffect(() => {
@@ -221,6 +228,11 @@ export default function Header() {
               </AnimatePresence>
             </div>
 
+            {/* Aulas */}
+            <Link to="/aulas">
+              <span className={navBtn}>Aulas</span>
+            </Link>
+
             {/* Context-aware nav links */}
             {navLinks.map(link => (
               <button
@@ -279,6 +291,21 @@ export default function Header() {
                   </Link>
                 </motion.div>
               ))}
+
+              <p className="text-white/50 text-xs font-semibold uppercase tracking-widest mt-6 mb-3">Aulas</p>
+              <motion.div
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.2 }}
+              >
+                <Link
+                  to="/aulas"
+                  className="flex items-center gap-3 py-3 text-white/80 hover:text-white text-sm border-b border-white/10 transition-colors"
+                >
+                  <span className="w-2 h-2 rounded-full shrink-0" style={{ background: AMBER }} />
+                  Aulas de IA e Cortes
+                </Link>
+              </motion.div>
 
               <p className="text-white/50 text-xs font-semibold uppercase tracking-widest mt-6 mb-3">
                 {isProject ? 'Nesta página' : 'Navegação'}

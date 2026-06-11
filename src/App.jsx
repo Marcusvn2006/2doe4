@@ -8,6 +8,7 @@ import SaudeBrotas from './pages/SaudeBrotas'
 import EquoterapiaBoituva from './pages/EquoterapiaBoituva'
 import EsporteJau from './pages/EsporteJau'
 import MeioAmbienteBocaina from './pages/MeioAmbienteBocaina'
+import Aulas from './pages/Aulas'
 import Manutencao from './pages/Manutencao'
 import './App.css'
 
@@ -28,6 +29,7 @@ function Layout() {
           <Route path="/equoterapia" element={<EquoterapiaBoituva />} />
           <Route path="/esporte" element={<EsporteJau />} />
           <Route path="/meio-ambiente" element={<MeioAmbienteBocaina />} />
+          <Route path="/aulas" element={<Aulas />} />
         </Routes>
       </main>
       {!isManutencao && <Footer />}

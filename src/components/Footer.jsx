@@ -200,6 +200,9 @@ export default function Footer() {
           <div>
             <p className="text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: '#101828' }}>Links</p>
             <div className="flex flex-col gap-2.5">
+              <Link to="/aulas" className="text-sm transition-colors text-left hover:opacity-70" style={{ color: '#101828' }}>
+                Aulas Gratuitas
+              </Link>
               {[
                 { label: 'Vantagens',     action: () => scrollTo('vantagens') },
                 { label: 'Seja Parceiro', action: () => scrollTo('parceiros') },
